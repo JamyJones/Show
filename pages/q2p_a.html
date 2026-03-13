@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            border: 1px solid white;
+            border-collapse: collapse;
+            width: 100%;
+            color: black;
+        }
+        th, td {
+            border: 1px solid white;
+            text-align: left;
+            padding: 8px;
+        }
+        .header {
+            background-color: orange;
+        }
+        .second-row {
+            background-color: #ffcccc; /* light pale red */
+            height: 100px;
+        }
+        .third-row-container {
+            display: flex;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .third-row-cell {
+            flex: 1;
+            border: 1px solid white;
+            background-color: #ffffcc; /* light yellowish */
+            color: black;
+            text-align: left;
+            padding: 8px;
+            height: 100px;
+            box-sizing: border-box;
+            /* Prevent shrinking */
+            min-width: 0;
+        }
+        /* Remove table cell padding for third row container */
+        .third-row-table-cell {
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr class="header">
+            <th colspan="2">First Frame: Name and address</th>
+        </tr>
+        <tr class="second-row">
+            <td width="50%">Second frame<br>Bulleted list of qualifications</td>
+            <td width="50%">Third frame<br>Links to favourite sites</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="third-row-table-cell">
+                <div class="third-row-container">
+                    <div class="third-row-cell">
+                        Fourth Frame<br>scrolling message
+                    </div>
+                    <div class="third-row-cell">
+                        Fifth frame<br>Blinking reminders
+                    </div>
+                    <div class="third-row-cell">
+                        Sixth frame<br>image
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

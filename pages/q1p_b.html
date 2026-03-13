@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+        }
+        th, td {
+            border: 2px solid black;
+            text-align: center;
+            font-size: 40px;
+        }
+        .top-row {
+            background-color: red;
+            color: white;
+            height: 50px;
+        }
+        .bottom-row {
+            height: 200px;
+            color:white;
+        }
+        .left-column, .right-column {
+            background-color: orange;
+            width: 50%;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr class="top-row">
+            <th colspan="2">Top Frame</th>
+        </tr>
+        <tr class="bottom-row">
+            <td class="left-column">Left Frame</td>
+            <td class="right-column">Right Frame</td>
+        </tr>
+    </table>
+</body>
+</html>
