@@ -2,106 +2,205 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>SOMAC Info Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOMAC Information</title>
+    <!-- Google Fonts for comfort and variety -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Lora:700|Roboto:400,700|Fira+Mono:400,700" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            background: linear-gradient(135deg, #fafafa 0%, #f2f3f7 100%);
+            margin: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #232323;
+        }
+        .container {
+            max-width: 650px;
+            margin: 42px auto 0 auto;
+            background: #fff;
+            border-radius: 26px;
+            box-shadow: 0 8px 32px rgba(120,143,234,0.08), 0 2px 8px rgba(0,0,0,0.06);
+            padding: 44px 36px 40px 36px;
+        }
+        .header-container {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .somac {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 3.2em;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: #52616b;
+            margin-bottom: 4px;
+        }
+        .full-form {
+            font-family: 'Lora', serif;
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #2176ae;
+            margin-bottom: 14px;
+        }
+        .address {
+            font-size: 1.05em;
+            color: #676987;
+            margin-bottom: 35px;
             text-align: center;
         }
-        
-        .header-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .somac {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .full-form {
-            font-size: 1.2em;
+        .courses-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3em;
+            color: #444;
+            font-weight: 700;
+            letter-spacing: 0.04em;
             margin-bottom: 10px;
+            background: #f7f9fc;
+            padding: 11px 0;
+            border-radius: 9px;
+            box-shadow: 0 2px 8px rgba(120,143,234,0.03);
         }
-        
-        .address {
-            font-size: 0.8em;
-            color: #555;
-            margin-bottom: 30px;
-        }
-        
         .courses {
-            text-align: left;
-            margin: 30px 0;
+            margin: 18px 0 36px 0;
         }
-        
+        .courses-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .courses-list li {
+            margin-bottom: 15px;
+            padding: 14px 21px;
+            border-radius: 10px;
+            font-size: 1.14em;
+            transition: transform 0.13s;
+            box-shadow: 0 2px 12px rgba(120,143,234,0.05);
+        }
+        .courses-list li:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 14px rgba(86, 118, 238, 0.10);
+        }
         .course1 {
-            color: #e74c3c;
-            font-family: 'Verdana', sans-serif;
+            background: linear-gradient(90deg, #ffe5d9 80%, #ef476f 100%);
+            color: #4b2f32;
+            font-family: 'Montserrat', sans-serif;
             font-style: italic;
-            font-size: 1.2em;
         }
-        
         .course2 {
-            color: #3498db;
-            font-family: 'Georgia', serif;
+            background: linear-gradient(90deg, #d0f4de 80%, #48bfe3 100%);
+            color: #24527a;
+            font-family: 'Lora', serif;
             font-weight: bold;
-            font-size: 1.2em;
         }
-        
         .course3 {
-            color: #2ecc71;
-            font-family: 'Courier New', monospace;
+            background: linear-gradient(90deg, #fffac2 80%, #43aa8b 100%);
+            color: #2b2a32;
+            font-family: 'Fira Mono', monospace;
             text-decoration: underline;
-            font-size: 1.2em;
         }
-        
-        .marquee-container {
-            margin: 30px 0;
-            padding: 10px;
-            background-color: #f0f0f0;
-            border-radius: 5px;
+  .marquee-banner {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 50px;
+    border-radius: 15px;
+    background: linear-gradient(90deg, #e3f6f5 60%, #a8dadc 100%);
+    box-shadow: 0 4px 16px rgba(86, 118, 238, 0.15);
+    border: 2px solid #b5c9ed;
+    padding-left: 22px;
+    margin: 46px 0 34px 0;
+    overflow: hidden;
+}
+
+.marquee-icon {
+    font-size: 1.6em;
+    color: #0077b6;
+    margin-right: 18px;
+    flex-shrink: 0;
+    filter: drop-shadow(1px 1px 2px #fff);
+}
+
+.marquee-message {
+    display: inline-block;
+    color: #264653;
+    font-size: 1.14em;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    padding-left: 100%;
+    animation: marquee-scroll 16s linear infinite;
+    text-shadow: 0 1px 2px #fff8;
+}
+
+@keyframes marquee-scroll {
+    0% { transform: translateX(0);}
+    100% { transform: translateX(-100%);}
+}
         }
-        
-        .logo {
-            width: 150px;
-            height: 150px;
-            margin: 30px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .logo-img {
+            display: block;
+            margin: 44px auto 0 auto;
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 4px 28px rgba(30, 90, 180, 0.10);
+            border: 2.5px solid #e7eaf6;
+            background: #f9fafb;
+        }
+        .logo-caption {
+            text-align: center;
+            font-family: 'Lora', serif;
+            font-size: 1em;
+            color: #757780;
+            margin-top: 14px;
+            font-style: italic;
+        }
+        /* Responsive */
+        @media (max-width: 540px) {
+            .container {
+                padding: 18px 4px 20px 4px;
+            }
+            .somac {
+                font-size: 2em;
+            }
+            .full-form {
+                font-size: 1.08em;
+            }
+            .courses-label {
+                font-size: 1.07em;
+                padding: 7px 0;
+            }
+            .logo-img {
+                width: 85px;
+                height: 85px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header-container">
-        <div class="somac">SOMAC</div>
-        <div class="full-form">School of Mathematics and Computing</div>
-    </div>
-    
-    <div class="address">KIU new building department offices</div>
-    
-    <div class="courses">
-        <div class="course1">Bachelors of Computer Science</div>
-        <div class="course2">Bachelors of Information and Tech</div>
-        <div class="course3">Bachelor Mathematics and Computer Statistics</div>
-    </div>
-    
-    <div class="marquee-container">
-        <marquee behavior="scroll" direction="left">
-            Welcome to SOMAC - Where innovation meets mathematics and computing excellence! Admissions now open for Fall 2026.
-        </marquee>
-    </div>
-    
-    <div class="logo">
-      <img src="../assets/kiu.png" alt="Kiu logo"/>
+    <div class="container">
+        <div class="header-container">
+            <div class="somac">SOMAC</div>
+            <div class="full-form">School of Mathematics and Computing</div>
+        </div>
+        <div class="address">KIU new building department offices</div>
+        <!-- Courses section -->
+        <div class="courses-label">Available Degree Programs</div>
+        <div class="courses">
+            <ul class="courses-list">
+                <li class="course1">Bachelors of Computer Science</li>
+                <li class="course2">Bachelors of Information and Technology</li>
+                <li class="course3">Bachelor Mathematics and Computer Statistics</li>
+            </ul>
+        </div>
+   <div class="marquee-banner">
+    <span class="marquee-icon" aria-hidden="true">&#128276;</span>
+    <span class="marquee-message">Admissions are now open at SOMAC! Experience a supportive learning environment in mathematics and computing at KIU.</span>
+</div>
+
+        <!-- University Logo -->
+        <img src="assets/kiu.png" alt="KIU University Logo" class="logo-img">
+        <div class="logo-caption">KIU - School of Mathematics and Computing</div>
     </div>
 </body>
 </html>

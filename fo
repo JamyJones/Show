@@ -1,0 +1,30 @@
+Certainly! Here’s a **much improved, rewritten version** of the stylish and comfy marquee section, ready for your site:
+
+---
+
+**HTML:**
+```html
+```
+
+**CSS:**
+```css
+
+```
+
+---
+
+### **How this improves styling**
+- Soft blue gradient background and gentle box-shadow give a comfy, modern look.
+- Rounded corners and subtle border add polish.
+- Announcement bell icon (`&#128276;`) draws attention without being harsh.
+- Text is highly readable, bold, and shadowed for clarity.
+- Smooth, continuous CSS animation for accessibility.
+- Generous padding and spacing make everything feel inviting.
+
+**Accessibility tip:**  
+Add `aria-hidden="true"` to the icon for screen readers, and use a live region if you wish the marquee to be announced.
+
+---
+
+**To use it:**  
+Replace your old marquee or banner with this HTML and CSS. Adjust the message, colors, or icon as you wish for your brand!
