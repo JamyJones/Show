@@ -1,144 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Departmental Store Customer Information</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #e2e8f0;
-            margin: 0;
-            padding: 0;
-        }
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-top: 30px;
-        }
-        form {
-            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-            padding: 30px 25px;
-            border-radius: 16px;
-            margin: 40px auto;
-            max-width: 500px;
-            box-shadow: 0 8px 32px rgba(44,62,80,0.2);
-        }
-        .form-group {
-            margin-bottom: 18px;
-        }
-        label {
-            display: block;
-            margin-bottom: 7px;
-            font-weight: 600;
-        }
-        input[type="text"],
-        input[type="tel"],
-        textarea,
-        select {
-            width: 100%;
-            padding: 9px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-size: 1em;
-            margin-bottom: 2px;
-        }
-        .days-row {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-        .days-row label {
-            display: inline-block;
-            margin-bottom: 0;
-            font-weight: normal;
-        }
-        .days-row input[type="checkbox"] {
-            margin-right: 4px;
-        }
-        .form-group textarea {
-            resize: vertical;
-        }
-        button {
-            background-color: #2d9cdb;
-            color: white;
-            border: none;
-            padding: 10px 22px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            margin-right: 12px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-            transition: background 0.2s;
-        }
-        button[type="reset"] {
-            background-color: #e74c3c;
-        }
-        button:hover {
-            opacity: 0.97;
-            background-color: #2386c8;
-        }
-        .small-note {
-            font-size: 0.9em;
-            color: #2c3e50;
-            margin-top: 3px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Departmental Store Customer Information</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(-45deg, #f7f9fc, #e3f2fd, #d0f0c0, #ffe5d9);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      margin: 0;
+      padding: 0;
+    }
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-top: 30px;
+      font-weight: 700;
+    }
+    form {
+      background: #fff;
+      padding: 30px 25px;
+      border-radius: 16px;
+      margin: 40px auto;
+      max-width: 650px;
+      box-shadow: 0 8px 32px rgba(44,62,80,0.15);
+    }
+    .form-step { display: none; }
+    .form-step.active { display: block; animation: fadeIn 0.5s ease; }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; margin-bottom: 7px; font-weight: 600; color: #34495e; }
+    input, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+    .days-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .day-pill { background: #ecf0f1; border-radius: 20px; padding: 6px 14px; cursor: pointer; transition: all 0.3s ease; }
+    .day-pill:hover { background: #2d9cdb; color: #fff; transform: scale(1.05); }
+    .dropdown { position: relative; }
+    .dropdown-toggle { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; background: #fff; cursor: pointer; }
+    .dropdown-menu { position: absolute; top: 100%; left: 0; right: 0; background: #fff; border: 1px solid #ccc; border-radius: 6px; margin-top: 5px; max-height: 200px; overflow-y: auto; display: none; z-index: 10; }
+    .dropdown-menu div { padding: 8px 12px; cursor: pointer; }
+    .dropdown-menu div:hover { background: #d0e6f7; }
+    .bubble-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .bubble { background: #2d9cdb; color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 0.9em; display: flex; align-items: center; gap: 6px; }
+    .bubble span { cursor: pointer; font-weight: bold; }
+    button { background-color: #2d9cdb; color: white; border: none; padding: 10px 22px; border-radius: 6px; cursor: pointer; font-size: 1em; margin: 10px 5px; }
+    button[type="reset"] { background-color: #e74c3c; }
+    button:hover { transform: translateY(-2px); opacity: 0.95; }
+    /* Progress bar */
+    .progress { display: flex; justify-content: space-between; margin-bottom: 25px; }
+    .progress-step { flex: 1; text-align: center; position: relative; }
+    .progress-circle { width: 28px; height: 28px; border-radius: 50%; background: #ccc; margin: 0 auto 6px; line-height: 28px; color: #fff; }
+    .progress-step.active .progress-circle { background: #2d9cdb; }
+  </style>
 </head>
 <body>
-    <h1>Customer Information Form</h1>
-    <form action="#" method="post">
-        <div class="form-group">
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required>
+  <h1>Customer Information Form</h1>
+  <form id="multiStepForm">
+    <div class="progress">
+      <div class="progress-step active"><div class="progress-circle">1</div><div>Personal</div></div>
+      <div class="progress-step"><div class="progress-circle">2</div><div>Preferences</div></div>
+      <div class="progress-step"><div class="progress-circle">3</div><div>Feedback</div></div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="form-step active">
+      <div class="form-group">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Contact Phone Number:</label>
+        <input type="tel" id="phone" required>
+      </div>
+      <button type="button" onclick="nextStep()">Next</button>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="form-step">
+      <div class="form-group">
+        <label>Preferred Days of Purchasing:</label>
+        <div class="days-row">
+          <label class="day-pill"><input type="checkbox" value="Monday">Monday</label>
+          <label class="day-pill"><input type="checkbox" value="Tuesday">Tuesday</label>
+          <label class="day-pill"><input type="checkbox" value="Wednesday">Wednesday</label>
+          <label class="day-pill"><input type="checkbox" value="Thursday">Thursday</label>
+          <label class="day-pill"><input type="checkbox" value="Friday">Friday</label>
+          <label class="day-pill"><input type="checkbox" value="Saturday">Saturday</label>
+          <label class="day-pill"><input type="checkbox" value="Sunday">Sunday</label>
         </div>
-        
-        <div class="form-group">
-            <label for="phone">Contact Phone Number:</label>
-            <input type="tel" id="phone" name="phone" required>
+      </div>
+      <div class="form-group">
+        <label>Favorite Items:</label>
+        <div class="dropdown">
+          <div class="dropdown-toggle">Select an item</div>
+          <div class="dropdown-menu">
+            <div data-value="Groceries">Groceries</div>
+            <div data-value="Dairy">Dairy Products</div>
+            <div data-value="Bakery">Bakery Items</div>
+            <div data-value="Fruits">Fresh Fruits</div>
+            <div data-value="Vegetables">Fresh Vegetables</div>
+            <div data-value="Meat">Meat & Poultry</div>
+            <div data-value="Frozen">Frozen Foods</div>
+            <div data-value="Beverages">Beverages</div>
+            <div data-value="Snacks">Snacks & Chips</div>
+            <div data-value="Personal Care">Personal Care</div>
+            <div data-value="Household">Household Items</div>
+          </div>
         </div>
-        
-        <div class="form-group">
-            <label>Preferred Days of Purchasing:</label>
-            <div class="days-row">
-                <label><input type="checkbox" name="preferred_days" value="Monday">Monday</label>
-                <label><input type="checkbox" name="preferred_days" value="Tuesday">Tuesday</label>
-                <label><input type="checkbox" name="preferred_days" value="Wednesday">Wednesday</label>
-                <label><input type="checkbox" name="preferred_days" value="Thursday">Thursday</label>
-                <label><input type="checkbox" name="preferred_days" value="Friday">Friday</label>
-                <label><input type="checkbox" name="preferred_days" value="Saturday">Saturday</label>
-                <label><input type="checkbox" name="preferred_days" value="Sunday">Sunday</label>
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label for="favorite_items">Favorite Items:</label>
-            <select id="favorite_items" name="favorite_items[]" multiple size="6">
-                <option value="groceries">Groceries</option>
-                <option value="dairy">Dairy Products</option>
-                <option value="bakery">Bakery Items</option>
-                <option value="fruits">Fresh Fruits</option>
-                <option value="vegetables">Fresh Vegetables</option>
-                <option value="meat">Meat & Poultry</option>
-                <option value="frozen">Frozen Foods</option>
-                <option value="beverages">Beverages</option>
-                <option value="snacks">Snacks & Chips</option>
-                <option value="personal_care">Personal Care</option>
-                <option value="household">Household Items</option>
-            </select>
-            <div class="small-note">(Hold Ctrl/Cmd or Shift to select multiple items)</div>
-        </div>
-        
-        <div class="form-group">
-            <label for="suggestions">Suggestions or Feedback:</label>
-            <textarea id="suggestions" name="suggestions" rows="4"></textarea>
-        </div>
-        
-        <div class="form-group">
-            <button type="submit">Submit</button>
-            <button type="reset">Reset</button>
-        </div>
-    </form>
+        <div class="bubble-container" id="bubbleContainer"></div>
+      </div>
+      <button type="button" onclick="prevStep()">Back</button>
+      <button type="button" onclick="nextStep()">Next</button>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="form-step">
+      <div class="form-group">
+        <label for="suggestions">Suggestions or Feedback:</label>
+        <textarea id="suggestions" rows="4"></textarea>
+      </div>
+      <button type="button" onclick="prevStep()">Back</button>
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+    </div>
+  </form>
+
+  <footer style="text-align:center; margin:20px 0; color:#34495e; font-size:0.95em;">
+    <p>Departmental Store &copy; 2026 — Customer First, Always</p>
+    <p style="font-size:0.85em; color:#2d9cdb;">Thank you for sharing your preferences with us!</p>
+  </footer>
+
+  <script>
+    let currentStep = 0;
+    const steps = document.querySelectorAll('.form-step');
+    const progressSteps = document.querySelectorAll('.progress-step');
+
+        function showStep(index) {
+      steps.forEach((step, i) => step.classList.toggle('active', i === index));
+      progressSteps.forEach((p, i) => p.classList.toggle('active', i === index));
+      currentStep = index;
+    }
+
+    function nextStep() {
+      if (currentStep < steps.length - 1) {
+        showStep(currentStep + 1);
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 0) {
+        showStep(currentStep - 1);
+      }
+    }
+
+    // Dropdown bubbles
+    const toggle = document.querySelector('.dropdown-toggle');
+    const menu = document.querySelector('.dropdown-menu');
+    const bubbleContainer = document.getElementById('bubbleContainer');
+
+    toggle.addEventListener('click', () => {
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    menu.querySelectorAll('div').forEach(item => {
+      item.addEventListener('click', () => {
+        const value = item.dataset.value;
+        if (!document.getElementById(value)) {
+          const bubble = document.createElement('div');
+          bubble.className = 'bubble';
+          bubble.id = value;
+          bubble.innerHTML = value + ' <span>&times;</span>';
+          bubble.querySelector('span').addEventListener('click', () => {
+            bubble.remove();
+          });
+          bubbleContainer.appendChild(bubble);
+        }
+        menu.style.display = 'none';
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.dropdown')) {
+        menu.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
+
