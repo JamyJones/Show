@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>SOMAC Info Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Fonts for comfort and variety -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Lora:700|Roboto:400,700|Fira+Mono:400,700" rel="stylesheet">
     <style>
         body {
@@ -14,7 +14,7 @@
             color: #232323;
         }
         .container {
-            max-width: 650px;
+            max-width: 850px;
             margin: 42px auto 0 auto;
             background: #fff;
             border-radius: 26px;
@@ -57,6 +57,7 @@
             padding: 11px 0;
             border-radius: 9px;
             box-shadow: 0 2px 8px rgba(120,143,234,0.03);
+            text-align: center;
         }
         .courses {
             margin: 18px 0 36px 0;
@@ -65,9 +66,11 @@
             list-style: none;
             padding: 0;
             margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 18px;
         }
         .courses-list li {
-            margin-bottom: 15px;
             padding: 14px 21px;
             border-radius: 10px;
             font-size: 1.14em;
@@ -96,55 +99,83 @@
             font-family: 'Fira Mono', monospace;
             text-decoration: underline;
         }
-  .marquee-banner {
-    display: flex;
-    align-items: center;
-    position: relative;
-    height: 50px;
-    border-radius: 15px;
-    background: linear-gradient(90deg, #e3f6f5 60%, #a8dadc 100%);
-    box-shadow: 0 4px 16px rgba(86, 118, 238, 0.15);
-    border: 2px solid #b5c9ed;
-    padding-left: 22px;
-    margin: 46px 0 34px 0;
-    overflow: hidden;
-}
-
-.marquee-icon {
-    font-size: 1.6em;
-    color: #0077b6;
-    margin-right: 18px;
-    flex-shrink: 0;
-    filter: drop-shadow(1px 1px 2px #fff);
-}
-
-.marquee-message {
-    display: inline-block;
-    color: #264653;
-    font-size: 1.14em;
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    white-space: nowrap;
-    padding-left: 100%;
-    animation: marquee-scroll 16s linear infinite;
-    text-shadow: 0 1px 2px #fff8;
-}
-
-@keyframes marquee-scroll {
-    0% { transform: translateX(0);}
-    100% { transform: translateX(-100%);}
-}
+        .course-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .course-card {
+            flex: 1 1 250px;
+            background: #f9fafc;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        .course-card h3 {
+            margin-top: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #2176ae;
+        }
+        .course-card p {
+            font-size: 0.95em;
+            color: #444;
+        }
+        .marquee-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            height: 50px;
+            border-radius: 15px;
+            background: linear-gradient(90deg, #e3f6f5 60%, #a8dadc 100%);
+            box-shadow: 0 4px 16px rgba(86, 118, 238, 0.15);
+            border: 2px solid #b5c9ed;
+            margin: 46px 0 34px 0;
+            overflow: hidden;
+        }
+        .marquee-icon {
+            font-size: 1.6em;
+            color: #0077b6;
+            margin: 0 18px;
+            flex-shrink: 0;
+            filter: drop-shadow(1px 1px 2px #fff);
+            animation: bell-shake 1.5s infinite;
+        }
+        @keyframes bell-shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(15deg); }
+            50% { transform: rotate(-15deg); }
+            75% { transform: rotate(10deg); }
+            100% { transform: rotate(0deg); }
+        }
+        .marquee-message {
+            display: inline-block;
+            color: #264653;
+            font-size: 1.14em;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: marquee-scroll 16s linear infinite;
+            text-shadow: 0 1px 2px #fff8;
+        }
+        @keyframes marquee-scroll {
+            0% { transform: translateX(0);}
+            100% { transform: translateX(-100%);}
         }
         .logo-img {
             display: block;
             margin: 44px auto 0 auto;
-            width: 130px;
-            height: 130px;
             object-fit: cover;
-            border-radius: 50%;
+            border-radius: 5%;
             box-shadow: 0 4px 28px rgba(30, 90, 180, 0.10);
-            border: 2.5px solid #e7eaf6;
+            border: 0;
             background: #f9fafb;
         }
         .logo-caption {
@@ -155,7 +186,40 @@
             margin-top: 14px;
             font-style: italic;
         }
-        /* Responsive */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+        table th {
+            background: #2176ae;
+            color: #fff;
+        }
+        table tr:nth-child(even) {
+            background: #f2f3f7;
+        }
+        footer {
+            background: linear-gradient(90deg, #2176ae, #48bfe3);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            border-radius: 0 0 26px 26px;
+            margin-top: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1em;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+        }
+        footer span {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.9em;
+            color: #e3f6f5;
+        }
         @media (max-width: 540px) {
             .container {
                 padding: 18px 4px 20px 4px;
@@ -179,11 +243,12 @@
 </head>
 <body>
     <div class="container">
-        <div class="header-container">
+                <div class="header-container">
             <div class="somac">SOMAC</div>
             <div class="full-form">School of Mathematics and Computing</div>
         </div>
         <div class="address">KIU new building department offices</div>
+
         <!-- Courses section -->
         <div class="courses-label">Available Degree Programs</div>
         <div class="courses">
@@ -193,14 +258,68 @@
                 <li class="course3">Bachelor Mathematics and Computer Statistics</li>
             </ul>
         </div>
-   <div class="marquee-banner">
-    <span class="marquee-icon" aria-hidden="true">&#128276;</span>
-    <span class="marquee-message">Admissions are now open at SOMAC! Experience a supportive learning environment in mathematics and computing at KIU.</span>
-</div>
+
+        <!-- Course Showcase -->
+        <div class="course-showcase">
+            <div class="course-card">
+                <h3>Computer Science</h3>
+                <p>Learn programming, algorithms, and software engineering with hands-on projects and industry mentorship.</p>
+            </div>
+            <div class="course-card">
+                <h3>Information Technology</h3>
+                <p>Master networking, cybersecurity, and IT management to prepare for dynamic tech careers.</p>
+            </div>
+            <div class="course-card">
+                <h3>Mathematics & Statistics</h3>
+                <p>Develop strong analytical skills in applied mathematics, statistics, and data science.</p>
+            </div>
+        </div>
+
+        <!-- Marquee Banner -->
+        <div class="marquee-banner">
+            <span class="marquee-icon" aria-hidden="true">&#128276;</span>
+            <span class="marquee-message">Admissions are now open at SOMAC! Experience a supportive learning environment in mathematics and computing at KIU.</span>
+            <span class="marquee-icon" aria-hidden="true">&#128276;</span>
+        </div>
 
         <!-- University Logo -->
-        <img src="assets/kiu.png" alt="KIU University Logo" class="logo-img">
+        <img src="../assets/kiu.png" alt="KIU University Logo" class="logo-img">
         <div class="logo-caption">KIU - School of Mathematics and Computing</div>
+
+        <!-- Data Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Program</th>
+                    <th>Duration</th>
+                    <th>Career Opportunities</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>BSc Computer Science</td>
+                    <td>3 Years</td>
+                    <td>Software Developer, Systems Analyst</td>
+                </tr>
+                <tr>
+                    <td>BSc Information Technology</td>
+                    <td>3 Years</td>
+                    <td>Network Engineer, IT Consultant</td>
+                </tr>
+                <tr>
+                    <td>BSc Mathematics & Statistics</td>
+                    <td>3 Years</td>
+                    <td>Data Analyst, Statistician</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Footer -->
+        <footer>
+            SOMAC - School of Mathematics and Computing
+            <span>Empowering students with knowledge and innovation</span>
+        </footer>
     </div>
 </body>
 </html>
+
