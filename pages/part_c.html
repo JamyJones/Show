@@ -2,28 +2,34 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Personal Information Form – Updated</title>
+<title>Personal Information Form – Final</title>
 <style>
-/* -------------------------- Page -------------------------- */
+/* ---------- Page background ----------
+   The page and the form share the same background so the title looks like it cuts the border. ----------
+*/
 body{
   margin:0;
   font-family:Arial,Helvetica,sans-serif;
-  background:#f4f4f4;          /* page background = form background */
+  background:#f4f4f4;           /* page background = form background */
 }
 
-/* -------------------------- Form -------------------------- */
+/* ---------- Form container ----------
+   width: 100% (full page width), 100 % border, sharp corners ----------
+*/
 .form-container{
   width:100%;
-  max-width:700px;            /* optional – keeps it tidy on huge screens */
-  margin:30px auto;           /* centre */
+  max-width:700px;              /* optional, keeps layout tidy on wide screens */
+  margin:30px auto;
   border:1px solid #000;
   padding:15px;
-  background:#f4f4f4;         /* same as page for “cut‑through” look */
-  position:relative;         /* for the title */
+  background:#f4f4f4;           /* same as page for “cut‑through” look */
+  position:relative;
   box-sizing:border-box;
 }
 
-/* Title that cuts the border */
+/* ---------- Title that overlaps the top border ----------
+   Absolutely positioned, placed above the border, same background as page ----------
+*/
 .form-title{
   position:absolute;
   top:-15px;
@@ -34,10 +40,12 @@ body{
   font-weight:bold;
 }
 
-/* -------------------------- Image -------------------------- */
+/* ---------- Image placeholder ----------
+   Float right, margin gives space from border ----------
+*/
 .placeholder{
   float:right;
-  margin:0 0 15px 15px;        /* space from border & text */
+  margin:0 0 15px 15px;
   border:1px dashed #aaa;
   width:120px;
   height:120px;
@@ -45,24 +53,23 @@ body{
   display:block;
 }
 
-/* -------------------------- Fields -------------------------- */
+/* ---------- Field rows ----------
+   Each row: label (incl. colon) + input. Inputs use flex‑box to take remaining width. ----------
+*/
 .field-row{
   display:flex;
   align-items:center;
-  margin-bottom:10px;
+  margin-bottom:30px;
+  gap:10px;
 }
 
 .field-row label{
-  flex:0 0 120px;             /* fixed width label */
   font-weight:500;
 }
-.field-row .colon{
-  flex:0 0 10px;               /* colon */
-  text-align:right;
-}
+
 .field-row input,
 .field-row select{
-  flex:0 0 50%;               /* 50 % of form width */
+  flex:0 0 35%;                 /* 50 % of the form width for text inputs */
   padding:5px 8px;
   font-size:1rem;
   border:1px solid #999;
@@ -70,34 +77,38 @@ body{
   box-sizing:border-box;
 }
 
-/* Colour picker is only 10 % */
+/* Colour picker is only 10 % of the form width */
 .field-row input[type="color"]{
-  flex:0 0 10%;               /* 10 % */
-  padding:0;                  /* no padding so it shows just the colour */
+  flex:0 0 8%;
+  padding:0;
 }
 
-/* Radio group – only two options now */
+/* Radio group – only two options (Male / Female) ----------
+   Radio buttons and their labels sit on the same line ----------
+*/
 .radio-group{
   display:flex;
   align-items:center;
-  gap:10px;
-}
-.radio-group label{
-  margin-left:5px;
 }
 
-/* -------------------------- Address textarea -------------------------- */
-.textarea-group{
+.radio-group label{
+  margin-left:-10px;
+}
+
+/* ---------- Address textarea ----------
+   Label on top, textarea below, both full width of the form ----------
+*/
+.address-group{
   margin-bottom:10px;
 }
-.textarea-group label{
+.address-group label{
   display:block;
   margin-bottom:3px;
   font-weight:500;
 }
-.textarea-group textarea{
-  width:80%;                   /* 80 % of form width */
-  height:80px;
+.address-group textarea{
+  width:60%;                    /* 80 % of form width */
+  height:100px;
   padding:5px 8px;
   font-size:1rem;
   border:1px solid #999;
@@ -106,7 +117,9 @@ body{
   box-sizing:border-box;
 }
 
-/* -------------------------- Responsiveness -------------------------- */
+/* ---------- Responsiveness ----------
+   On very small screens, stack the label above the input ----------
+*/
 @media (max-width:480px){
   .field-row{
     flex-direction:column;
@@ -122,26 +135,23 @@ body{
   <div class="form-title">PERSONAL INFORMATION</div>
 
   <!-- Image placeholder -->
-  <img src="https://via.placeholder.com/120" alt="Image placeholder" class="placeholder">
+  <img src="../assets/man.png" alt="man profile" class="placeholder">
 
   <!-- First name -->
   <div class="field-row">
-    <label for="firstName">First name</label>
-    <span class="colon">:</span>
+    <label for="firstName">First name :</label>
     <input type="text" id="firstName" placeholder="First name">
   </div>
 
   <!-- Last name -->
   <div class="field-row">
-    <label for="lastName">Last name</label>
-    <span class="colon">:</span>
+    <label for="lastName">Last name :</label>
     <input type="text" id="lastName" placeholder="Last name">
   </div>
 
   <!-- Gender -->
   <div class="field-row">
-    <label for="gender">Gender</label>
-    <span class="colon">:</span>
+    <label for="gender">Gender :</label>
     <div class="radio-group">
       <input type="radio" id="genderMale" name="gender" value="male" checked>
       <label for="genderMale">Male</label>
@@ -152,56 +162,35 @@ body{
 
   <!-- Birthday -->
   <div class="field-row">
-    <label for="birthday">Birthday</label>
-    <span class="colon">:</span>
+    <label for="birthday">Birthday :</label>
     <input type="date" id="birthday" placeholder="dd/mm/yyyy">
   </div>
 
   <!-- Country -->
   <div class="field-row">
-    <label for="country">Country</label>
-    <span class="colon">:</span>
+    <label for="country">Country :</label>
     <input type="text" id="country" placeholder="Country">
   </div>
 
   <!-- Email -->
   <div class="field-row">
-    <label for="email">Email</label>
-    <span class="colon">:</span>
+    <label for="email">Email :</label>
     <input type="email" id="email" placeholder="Email">
   </div>
 
   <!-- Favourite colour -->
   <div class="field-row">
-    <label for="favColour">Select your favourite color:</label>
-    <span class="colon">:</span>
+    <label for="favColour">Select your favourite color :</label>
     <input type="color" id="favColour" value="#ff0000">
   </div>
 
   <!-- Address -->
-  <div class="textarea-group">
-    <label for="address">Address</label>
+  <div class="address-group">
+    <label for="address">Address :</label>
     <textarea id="address" placeholder="Enter your address here…"></textarea>
   </div>
 </div>
 
-<script>
-/* Optional: show a small coloured square next to the color picker */
-const colourInput = document.getElementById('favColour');
-const colourBox = document.createElement('div');
-colourBox.style.width = '20px';
-colourBox.style.height = '20px';
-colourBox.style.display = 'inline-block';
-colourBox.style.marginLeft = '10px';
-colourBox.style.verticalAlign = 'middle';
-colourBox.style.border = '1px solid #000';
-colourBox.style.backgroundColor = colourInput.value;
-colourInput.parentElement.appendChild(colourBox);
-
-colourInput.addEventListener('input', function() {
-  colourBox.style.backgroundColor = this.value;
-});
-</script>
 </body>
 </html>
 

@@ -1,71 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>BCS Coursework </title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 40px;
-        background: #f8f8fa;
-      }
-      h1 {
-        text-align: center;
-        margin-bottom: 30px;
-      }
-      .question-list {
-        max-width: 500px;
-        margin: auto;
-      }
-      .question {
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px #e0e0e0;
-        margin-bottom: 20px;
-        padding: 18px;
-      }
-      .question-title {
-        font-size: 1.2em;
-        margin-bottom: 8px;
-        font-weight: bold;
-      }
-      .parts {
-        margin-left: 20px;
-      }
-      .parts a {
-        margin-right: 15px;
-        color: #3756b2;
-        text-decoration: none;
-      }
-      .parts a:hover {
-        text-decoration: underline;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>BCS group Coursework submission</h1>
+<head>
+  <meta charset="UTF-8" />
+  <title>BCS Coursework – 2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <div class="question-list">
-      <div class="question">
-        <div class="question-title">Part C</div>
-        <div class="parts">
-          <a href="pages/part_a.html" title="Part a">Part a</a>
-        </div>
-      </div>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
-      <div class="question">
-        <div class="question-title">Part C</div>
-        <div class="parts">
-          <a href="pages/part_b.html" title="part b">Part b</a>
-        </div>
-      </div>
+  <style>
+    :root {
+      /* Core colours – change these to match your brand */
+      --bg-base: #f8f8fa;
+      --card-bg: #ffffff;
+      --primary: #3756b2;          /* Navy blue */
+      --primary-dark: #2b3c8c;
+      --border: #e0e0e0;
+      --text: #2c3e50;
+      --shadow: rgba(0, 0, 0, 0.08);
+    }
 
-      <div class="question">
-        <div class="question-title">Part C</div>
-        <div class="parts">
-          <a href="pages/part_c.html" title="Part c">Part C</a>
-        </div>
-      </div>
-    </div>
-  </body>
+    /* Global reset & base styles */
+    * { box-sizing: border-box; }
+    html { font-size: 16px; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-base);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Layout helpers */
+    .wrapper {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    /* Hero section */
+    header.hero {
+      text-align: center;
+      padding: 4rem 0;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+    }
+    header .title {
+      font-size: 2.5rem;
+      margin: 0 0 0.5rem 0;
+      font-weight: 600;
+    }
+    header .tagline {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Card grid */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px var(--shadow);
+      padding: 1.5rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .card h2 {
+      font-size: 1.4rem;
+      margin: 0 0 1rem 0;
+      color: var(--primary);
+    }
+
+    .card a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 600;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
+      text-align: center;
+      transition: background 0.2s ease;
+    }
+    .card a:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 480px) {
+      header .title { font-size: 2rem; }
+      .card h2 { font-size: 1.25rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <h1 class="title">BCS Coursework – 2</h1>
+    <p class="tagline">Choose a part to view the detailed submission</p>
+  </header>
+
+  <main class="wrapper">
+    <section class="cards" aria-label="Coursework parts">
+      <article class="card">
+        <h2>Part A</h2>
+        <a href="pages/part_a.html" title="Open Part A">View Part A</a>
+      </article>
+
+      <article class="card">
+        <h2>Part B</h2>
+        <a href="pages/part_b.html" title="Open Part B">View Part B</a>
+      </article>
+
+      <article class="card">
+        <h2>Part C</h2>
+        <a href="pages/part_c.html" title="Open Part C">View Part C</a>
+      </article>
+    </section>
+  </main>
+</body>
 </html>
