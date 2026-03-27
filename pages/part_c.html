@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Personal Information Form – Updated</title>
+<style>
+/* -------------------------- Page -------------------------- */
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f4f4;          /* page background = form background */
+}
+
+/* -------------------------- Form -------------------------- */
+.form-container{
+  width:100%;
+  max-width:700px;            /* optional – keeps it tidy on huge screens */
+  margin:30px auto;           /* centre */
+  border:1px solid #000;
+  padding:15px;
+  background:#f4f4f4;         /* same as page for “cut‑through” look */
+  position:relative;         /* for the title */
+  box-sizing:border-box;
+}
+
+/* Title that cuts the border */
+.form-title{
+  position:absolute;
+  top:-15px;
+  left:15px;
+  background:#f4f4f4;
+  padding:0 5px;
+  font-size:1.5rem;
+  font-weight:bold;
+}
+
+/* -------------------------- Image -------------------------- */
+.placeholder{
+  float:right;
+  margin:0 0 15px 15px;        /* space from border & text */
+  border:1px dashed #aaa;
+  width:120px;
+  height:120px;
+  background:#ddd;
+  display:block;
+}
+
+/* -------------------------- Fields -------------------------- */
+.field-row{
+  display:flex;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.field-row label{
+  flex:0 0 120px;             /* fixed width label */
+  font-weight:500;
+}
+.field-row .colon{
+  flex:0 0 10px;               /* colon */
+  text-align:right;
+}
+.field-row input,
+.field-row select{
+  flex:0 0 50%;               /* 50 % of form width */
+  padding:5px 8px;
+  font-size:1rem;
+  border:1px solid #999;
+  border-radius:0;
+  box-sizing:border-box;
+}
+
+/* Colour picker is only 10 % */
+.field-row input[type="color"]{
+  flex:0 0 10%;               /* 10 % */
+  padding:0;                  /* no padding so it shows just the colour */
+}
+
+/* Radio group – only two options now */
+.radio-group{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.radio-group label{
+  margin-left:5px;
+}
+
+/* -------------------------- Address textarea -------------------------- */
+.textarea-group{
+  margin-bottom:10px;
+}
+.textarea-group label{
+  display:block;
+  margin-bottom:3px;
+  font-weight:500;
+}
+.textarea-group textarea{
+  width:80%;                   /* 80 % of form width */
+  height:80px;
+  padding:5px 8px;
+  font-size:1rem;
+  border:1px solid #999;
+  border-radius:0;
+  resize:vertical;
+  box-sizing:border-box;
+}
+
+/* -------------------------- Responsiveness -------------------------- */
+@media (max-width:480px){
+  .field-row{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .field-row label{margin-bottom:3px;}
+}
+</style>
+</head>
+<body>
+
+<div class="form-container">
+  <div class="form-title">PERSONAL INFORMATION</div>
+
+  <!-- Image placeholder -->
+  <img src="https://via.placeholder.com/120" alt="Image placeholder" class="placeholder">
+
+  <!-- First name -->
+  <div class="field-row">
+    <label for="firstName">First name</label>
+    <span class="colon">:</span>
+    <input type="text" id="firstName" placeholder="First name">
+  </div>
+
+  <!-- Last name -->
+  <div class="field-row">
+    <label for="lastName">Last name</label>
+    <span class="colon">:</span>
+    <input type="text" id="lastName" placeholder="Last name">
+  </div>
+
+  <!-- Gender -->
+  <div class="field-row">
+    <label for="gender">Gender</label>
+    <span class="colon">:</span>
+    <div class="radio-group">
+      <input type="radio" id="genderMale" name="gender" value="male" checked>
+      <label for="genderMale">Male</label>
+      <input type="radio" id="genderFemale" name="gender" value="female">
+      <label for="genderFemale">Female</label>
+    </div>
+  </div>
+
+  <!-- Birthday -->
+  <div class="field-row">
+    <label for="birthday">Birthday</label>
+    <span class="colon">:</span>
+    <input type="date" id="birthday" placeholder="dd/mm/yyyy">
+  </div>
+
+  <!-- Country -->
+  <div class="field-row">
+    <label for="country">Country</label>
+    <span class="colon">:</span>
+    <input type="text" id="country" placeholder="Country">
+  </div>
+
+  <!-- Email -->
+  <div class="field-row">
+    <label for="email">Email</label>
+    <span class="colon">:</span>
+    <input type="email" id="email" placeholder="Email">
+  </div>
+
+  <!-- Favourite colour -->
+  <div class="field-row">
+    <label for="favColour">Select your favourite color:</label>
+    <span class="colon">:</span>
+    <input type="color" id="favColour" value="#ff0000">
+  </div>
+
+  <!-- Address -->
+  <div class="textarea-group">
+    <label for="address">Address</label>
+    <textarea id="address" placeholder="Enter your address here…"></textarea>
+  </div>
+</div>
+
+<script>
+/* Optional: show a small coloured square next to the color picker */
+const colourInput = document.getElementById('favColour');
+const colourBox = document.createElement('div');
+colourBox.style.width = '20px';
+colourBox.style.height = '20px';
+colourBox.style.display = 'inline-block';
+colourBox.style.marginLeft = '10px';
+colourBox.style.verticalAlign = 'middle';
+colourBox.style.border = '1px solid #000';
+colourBox.style.backgroundColor = colourInput.value;
+colourInput.parentElement.appendChild(colourBox);
+
+colourInput.addEventListener('input', function() {
+  colourBox.style.backgroundColor = this.value;
+});
+</script>
+</body>
+</html>
+

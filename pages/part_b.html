@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+    .form-container {
+      background: #07efff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 420px; /* narrower */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #003366;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 8px 8px;
+      align-items: start;
+      justify-items: start; /* align left */
+    }
+    label {
+      font-weight: bold;
+      color: #003366;
+      word-wrap: break-word;
+    }
+    input[type="text"], input[type="email"], input[type="date"], input[type="number"] {
+      width: 100%;
+      padding: 6px;
+      border: none;
+      border-bottom: 2px solid #0099cc;
+      background: #ffffff;
+      border-radius: 4px;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    }
+    .radio-group {
+      display: flex;
+      gap: 12px;
+    }
+    .dropdown {
+      position: relative;
+      width: 100%;
+    }
+    .dropdown input {
+      width: 100%;
+      padding: 6px;
+      border: none;
+      border-bottom: 2px solid #0099cc;
+      background: #ffffff;
+      border-radius: 4px;
+    }
+    .dropdown::after {
+      content: "▼";
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: #003366;
+    }
+    .dropdown-list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      max-height: 100px;
+      overflow-y: auto;
+      background: #fff;
+      border: 1px solid #0099cc;
+      border-radius: 4px;
+      display: none;
+      z-index: 10;
+    }
+    .dropdown-list div {
+      padding: 6px;
+      cursor: pointer;
+    }
+    .dropdown-list div:hover {
+      background: #cce6ff;
+    }
+    .actions {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 8px;
+      margin-top: 15px;
+      justify-items: start; /* align left */
+    }
+    .actions button {
+      padding: 5px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.85em;
+      background: #e0e0e0; /* lighter grey */
+      color: #333;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      width: auto; /* fit text only */
+    }
+    /* Width adjustments */
+    .city { width: 50%; }
+    .course { width: 30%; }
+    .district { width: 40%; }
+    .state { width: 50%; }
+    /* Remove chevron for DOB */
+    #dob::-webkit-calendar-picker-indicator { display: none; }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Student Registration Form</h2>
+    <form id="studentForm">
+      <div class="form-grid">
+        <label for="name">Name</label>
+        <input type="text" id="name" required>
+
+        <label for="fatherName">Father<br>Name</label>
+        <input type="text" id="fatherName" required>
+
+        <label for="postalAddress">Postal<br>Address</label>
+        <input type="text" id="postalAddress">
+
+        <label for="personalAddress">Personal<br>Address</label>
+        <input type="text" id="personalAddress">
+
+        <label>Sex</label>
+        <div class="radio-group">
+          <label><input type="radio" name="sex" value="Male"> Male</label>
+          <label><input type="radio" name="sex" value="Female"> Female</label>
+        </div>
+
+        <label>City</label>
+        <div class="dropdown city">
+          <input type="text" placeholder="Select..." readonly>
+          <div class="dropdown-list">
+            <div>Kampala</div>
+            <div>Entebbe</div>
+            <div>Jinja</div>
+            <div>Mbarara</div>
+            <div>Gulu</div>
+          </div>
+        </div>
+
+        <label>Course</label>
+        <div class="dropdown course">
+          <input type="text" placeholder="Select..." readonly>
+          <div class="dropdown-list">
+            <div>Computer Science</div>
+            <div>Engineering</div>
+            <div>Medicine</div>
+            <div>Law</div>
+          </div>
+        </div>
+
+        <label>District</label>
+        <div class="dropdown district">
+          <input type="text" placeholder="Select..." readonly>
+          <div class="dropdown-list">
+            <div>Wakiso</div>
+            <div>Mukono</div>
+            <div>Mbale</div>
+            <div>Fort Portal</div>
+          </div>
+        </div>
+
+        <label>State</label>
+        <div class="dropdown state">
+          <input type="text" placeholder="Select..." readonly>
+          <div class="dropdown-list">
+            <div>Central</div>
+            <div>Eastern</div>
+            <div>Northern</div>
+            <div>Western</div>
+          </div>
+        </div>
+
+        <label for="passCode">PassCode</label>
+        <input type="text" id="passCode">
+
+        <label for="emailId">Email<br>Id</label>
+        <input type="email" id="emailId">
+
+        <label for="dob">DOB</label>
+        <input type="date" id="dob">
+
+        <label for="mobileNo">Mobile<br>No</label>
+        <input type="number" id="mobileNo">
+      </div>
+
+      <div class="actions">
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.querySelectorAll('.dropdown').forEach(dropdown => {
+      const input = dropdown.querySelector('input');
+      const list = dropdown.querySelector('.dropdown-list');
+
+      input.addEventListener('click', () => {
+        list.style.display = list.style.display === 'block' ? 'none' : 'block';
+      });
+
+      list.querySelectorAll('div').forEach(option => {
+        option.addEventListener('click', () => {
+          input.value = option.textContent;
+          list.style.display = 'none';
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) {
+          list.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
